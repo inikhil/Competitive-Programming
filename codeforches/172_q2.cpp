@@ -1,0 +1,62 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+    double x,y,n,a,b,p,q,i;
+    double t=1,count;
+    cin>>x>>y>>n;
+    if(y<n)
+    {
+        cout<<x<<"/"<<y;
+    }
+    else
+    {
+        b=n-1;
+        a=x;
+        i=0;
+        while((i!=2))
+        {
+            count=abs(x/y-a/b);
+            if(count<t)
+            {
+                t=count;
+                p=a;
+                q=b;
+            }
+            b--;
+            i++;
+        }
+        b=n-1;
+        a=x;
+        i=0;
+        while((i!=2))
+        {
+            count=abs(x/y-a/b);
+            if(count<t)
+            {
+                t=count;
+                p=a;
+                q=b;
+            }
+            a--;
+            i++;
+        }
+        b=n-1;
+        a=x;
+        while((a>=0)||(b>0))
+        {
+            count=abs(x/y-a/b);
+            if(count<t)
+            {
+                t=count;
+                p=a;
+                q=b;
+            }
+            b--;
+            a--;
+        }
+        cout<<p<<"/"<<q;
+    }
+}
+

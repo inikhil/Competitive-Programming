@@ -1,0 +1,52 @@
+#include<iostream>
+#include<cstring>
+#include<cstdio>
+#include<fstream>
+using namespace std;
+int main(){
+    string s;
+    int m;
+    bool act=false;
+    bool c=false;
+    int i;
+    //cout<<"\\";
+    ifstream myfile;
+    myfile.open("abc.txt");
+    while(!myfile.eof()){
+        if(c==true){cout<<"\n";}
+        c=false;
+        getline(myfile,s);
+        //cout<<s.length()<<" ";
+        if(s.length()==0 && act==false){cout<<"\n";}
+        else if(s.length()==0 && act==true){m=1;}
+        //if(s=="\n" && act==false){cout<<"\n";}
+        else if(s.length()==1 && act==false){
+            cout<<s[0];
+        }
+        else{
+            for(i=0;i<s.length()-1;i++){
+                if(act==false){
+                    if(s[i]=='/' && s[i+1]=='/'){
+                        break;
+                    }
+                    else if(s[i]=='/' && s[i+1]=='*'){
+                        act=true;
+                    }
+                    //else if(s[i]==' '){cout<<s[i];}
+                    else{
+                        cout<<s[i];c=true;
+                        if(i==s.length()-2){cout<<s[i+1];}
+                    }
+                }
+                else{
+                    if(s[i]=='*' && s[i+1]=='/'){
+                        i=i+1;
+                        act=false;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
